@@ -10,13 +10,13 @@ var wrongGuess = [];
 //counter variables
 var wins = 0;
 var losses = 0;
-var guessesRemaining = 7;
+var guessesRemaining = 9;
 
 function Game() {
     //computer generates random word from words array
     randomWord = words[Math.floor(Math.random() * words.length)];
 
-    //split word into separate array for letters, tore in new array 
+    //split word into separate array for letters, store in new array 
     lettersOfWord = randomWord.split("");
 
     //length of the word
@@ -49,13 +49,14 @@ var mouser = document.getElementById("mouser");
 
 //reset game
 function reset() {
-    guessesRemaining = 7;
+    guessesRemaining = 9;
     wrongGuess = [];
     blanksAndCorrect = [];
     Game()
 }
 
 //check letters against the word option
+//need to add function for ignoring duplicate letter guessed. at one point i had it and then i lost it d'oh!
 
 //If/Else, to see if letter selected matches random word
 function checkLetters(letter) {
@@ -105,11 +106,11 @@ function complete() {
     document.getElementById("guessesremaining").innerHTML = " " + guessesRemaining;
 }
 
-//call start game function
+//start game function
 Game()
 
 //check keyup, convert to lowercase, tally guess
-//i need to figure out how to alert the player if a non-alpha key is selected. can i do that?
+//i need to figure out how to alert the player if a non-alpha key is selected. keys 65-90
 document.onkeyup = function (event) {
     var guesses = String.fromCharCode(event.keyCode).toLowerCase();
 
